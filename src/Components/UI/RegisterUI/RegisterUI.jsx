@@ -5,7 +5,6 @@ import axios from "axios"
 
 export const RegisterUI = () =>{
     const Register = 'https://backend-edw.herokuapp.com/usuario'
-    const Login = 'https://backend-edw.herokuapp.com/login'
 
     const [username, setUsername] = useState('')
     const [password, setPassword] = useState('')
@@ -24,27 +23,12 @@ export const RegisterUI = () =>{
     const dataPassword = (e) => {setPassword(e.target.value)}
     const dataName = (e) => {setName(e.target.value)}
 
-    // const bringUsers = (e) => {
-    //     e.preventDefault()
-    //     UrlUsers = 'https://backend-edw.herokuapp.com/usuarios'
-    //     const response = fetch(UrlUsers)
-    //     const data = response.json()
-    //     console.log(data);
-    // }
-    const login = (e) => {
-        e.preventDefault()
-        axios.post(Login,{
-            "username":username,
-            "password":password
-
-
-        }).then(response => response)
-        .then(data => console.log(data))
-    }
-
     return(
         <div>
             <form>
+                <div className='divRegister'>
+                    <h2>Register</h2>
+                </div>
                 <b><p>Username</p></b>
                 <input type="text" name="username" onChange={dataUsername}></input>
 
@@ -55,8 +39,6 @@ export const RegisterUI = () =>{
                 <input type="text" name="name" onChange={dataName}></input><br/>
 
                 <button onClick = {createUser}>Registrar</button>
-                <button onClick={login}>Login</button>
-                {/* <button onClick={bringUsers}>BringUsers</button> */}
 
             </form>
         </div>
